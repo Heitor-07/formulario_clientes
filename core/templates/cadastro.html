@@ -1,0 +1,47 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+	{% bootstrap_css %}
+	<link rel="stylesheet" href="{% static 'css/estilo_cadastro.css' %}">
+
+	<title>Cadastrar cliente</title>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<!-- Topo com logo e botão Logout -->
+		<header>
+			<div class="topo">
+				<div>
+					<h2 class="logo"><a href="#">COMPANY</a></h2>
+				</div>
+
+				<div>
+					<h3><a href="/accounts/logout">Sair</a></h3>
+				</div>
+			</div>
+		</header>
+
+		<div>
+			<form method="post" class="form">
+				{% csrf_token %}
+				{% bootstrap_form form %}
+            	{% buttons %}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+           		{% endbuttons %}
+			</form>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>

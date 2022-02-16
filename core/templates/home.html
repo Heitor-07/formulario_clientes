@@ -1,0 +1,38 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+    {% bootstrap_css %}
+	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+
+	<title>Cadastrar cliente</title>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<!-- Topo com logo e botão Logout -->
+		<header>
+			<div class="topo">
+				<div>
+					<h2 class="logo"><a href="#">COMPANY</a></h2>
+				</div>
+			</div>
+		</header>
+
+		<!-- Botões de entrada -->
+		<div class="menu-entrada ">
+			<div>
+				<a href="{% url 'login' %}" class="btn btn-secondary center">Entrar</a>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
