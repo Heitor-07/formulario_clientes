@@ -1,9 +1,10 @@
-from django import forms
+from django.forms import ModelForm
 
 from .models import Cliente
 
 
-class ClienteForm(forms.ModelForm):
+class ClienteForm(ModelForm):
+
     class Meta:
         model = Cliente
         fields = ['nome', 'sexo', 'cpf', 'nasc', 'telefone', 'celular', 'email']
