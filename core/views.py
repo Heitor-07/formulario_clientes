@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -10,7 +10,7 @@ class IndexView(TemplateView):
     template_name = 'logar.html'
 
 
-class HomeView(TemplateView):
+class HomeView(LoginRequiredMixin ,TemplateView):
     template_name = 'home.html'
 
 
@@ -28,11 +28,14 @@ class Lista(LoginRequiredMixin, ListView):
     context_object_name = 'clientes'
 
 
-class AtualizaView(UpdateView):
+class AtualizaView(LoginRequiredMixin, UpdateView):
     model = Cliente
     template_name = 'cliente.html'
     fields = ['nome', 'sexo', 'cpf', 'nasc', 'telefone', 'celular', 'email']
     success_url = reverse_lazy('lista')
 
 
-
+class DeletaView(LoginRequiredMixin, DeleteView):
+    model = Cliente
+    template_name = 'deletar.html'
+    success_url = reverse_lazy('lista')
