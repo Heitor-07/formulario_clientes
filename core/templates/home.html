@@ -6,8 +6,8 @@
 	<meta charset="utf-8"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-    {% bootstrap_css %}
-	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+	{% bootstrap_css %}
+	<link rel="stylesheet" href="{% static 'css/estilo_cadastro.css' %}">
 
 	<title>Cadastrar cliente</title>
 
@@ -20,17 +20,19 @@
 		<header>
 			<div class="topo">
 				<div>
-					<h2 class="logo"><a href="#">COMPANY</a></h2>
+					<h2 class="logo"><a class="text-secondary" href="{% url 'home' %}">COMPANY</a></h2>
+				</div>
+				<div class="d-flex mt-2">
+					<a href="{% url 'lista' %}" class="mr-4 text-secondary"><h4>Lista de clientes</h4></a>
+                    <a href="{% url 'cadastro' %}" class="text-secondary"><h4>Novo cliente</h4></a>
+				</div>
+
+				<div>
+					<h3><a href="/accounts/logout" class="text-secondary">Sair</a></h3>
 				</div>
 			</div>
 		</header>
 
-		<!-- Botões de entrada -->
-		<div class="menu-entrada ">
-			<div>
-				<a href="{% url 'login' %}" class="btn btn-secondary center">Entrar</a>
-			</div>
-		</div>
 
 	</div>
 

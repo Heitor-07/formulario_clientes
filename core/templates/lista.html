@@ -1,0 +1,68 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+    {% bootstrap_css %}
+	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+
+	<title>Cadastrar cliente</title>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<!-- Topo com logo e botão Logout -->
+		<header>
+			<div class="topo">
+				<div>
+					<h2 class="logo"><a class="text-secondary" href="{% url 'home' %}">COMPANY</a></h2>
+				</div>
+				<div class="d-flex mt-2">
+					<a href="{% url 'home' %}" class="mr-4 text-secondary"><h4>Início</h4></a>
+					<a href="{% url 'cadastro' %}" class="mr-4 text-secondary"><h4>Novo cliente</h4></a>
+				</div>
+				<div>
+					<h3><a href="/accounts/logout" class="mr-4 text-secondary">Sair</a></h3>
+				</div>
+			</div>
+		</header>
+
+		<div class="lista mt-5">
+			<table class="table text-white">
+				<thead>
+					<tr>
+						<th class="text-secondary">Nome</th>
+						<th class="text-secondary">Telefone</th>
+						<th class="text-secondary">E-mail</th>
+						<th class="text-secondary">CPF</th>
+						<th class="text-secondary">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for c in clientes %}
+					<tr>
+						<td class="text-success">{{ c.nome }}</td>
+						<td class="text-success">{{ c.telefone }}</td>
+						<td class="text-success">{{ c.email }}</td>
+						<td class="text-success">{{ c.cpf }}</td>
+						<td>
+						{% buttons %}
+							<buttons class="btn btn-primary" type="button"><a class="text-white" href="{% url 'cliente' c.pk %}">Editar</a></buttons>
+							<buttons class="btn btn-warning" type="button"><a class="text-primary" href="{% url 'cliente' c.pk %}">Deletar</a></buttons>
+						{% endbuttons %}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</body>
+</html>
