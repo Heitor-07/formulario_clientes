@@ -1,0 +1,55 @@
+body {
+    font-family: 'Times New Roman'
+}
+
+.container {
+    height: 100vh;
+}
+
+.topo {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topo a {
+    text-decoration: none;
+}
+
+.menu-entrada .btn {
+    width: 250px;
+    height: 50px;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.menu-entrada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+/* Menu consulta e relatórios */
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin-right: 70px;
+}
+
+.menu li {
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+/* Formulário */
+
+.form {
+    width: 60%;
+}
+
+.form-logar {
+    margin: 20%;
+}
+
