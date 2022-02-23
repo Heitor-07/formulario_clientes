@@ -1,7 +1,7 @@
 {% load static %}
 {% load bootstrap4 %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="{% static 'css/estilo_cadastro.css' %}">
 	{% bootstrap_css %}
 
-	<title>Cadastrar cliente</title>
+	<title>Editar cliente</title>
 
 </head>
 <body>
@@ -32,16 +32,55 @@
 				</div>
 			</div>
 		</header>
-
-		<div>
-			<form method="post" class="form">
-				{% csrf_token %}
-				{% bootstrap_form form %}
-            	{% buttons %}
-                <button type="submit" class="btn btn-primary">Salvar</button>
-           		{% endbuttons %}
-			</form>
-		</div>
-	</div>
+            <div class="mt-4">
+                <form method="post" action="" class="form">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="id_nome"class="col-sm-2 col-form-label">Nome</label>
+                        <div>
+                            {{ forms.nome }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_sexo" class="col-sm-2 col-form-label">Sexo</label>
+                        <div>
+                            {{ forms.sexo }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_cpf" class="col-sm-2 col-form-label">CPF</label>
+                        <div>
+                            {{forms.cpf}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_nasc" class="col-sm-2 col-form-label">Nascimento</label>
+                        <div>
+                            {{ forms.nasc }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_telefone" class="col-sm-2 col-form-label">Telefone</label>
+                        <div>
+                            {{forms.telefone}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_celular" class="col-sm-2 col-form-label">Celular</label>
+                        <div>
+                            {{forms.celular}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_email" class="col-sm-2 col-form-label">E-mail</label>
+                        <div>
+                            {{forms.email}}
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-primary mb-4">Salvar alteração</button>
+                        <button type="button" class="btn btn-warning mb-4"><a class="text-white" href="{% url 'lista' %}">Cancelar</a></button>
+                    </form>
+            </div>
+    </div>
 </body>
 </html>

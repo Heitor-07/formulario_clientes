@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, UpdateView, DeleteView
+from django.views.generic import TemplateView, ListView, DeleteView
 from .models import Cliente
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from .forms import ClienteForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -18,6 +19,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
 
 
+@login_required()
 def cadastro(request):
     template_name = 'cadastro.html'
     form = ClienteForm(request.POST or None)
@@ -26,8 +28,7 @@ def cadastro(request):
         if form.is_valid():
             form.save()
             return redirect('lista')
-        else:
-            print(form.errors)
+
     context = {'form': form}
     return render(request, template_name, context)
 
@@ -39,11 +40,17 @@ class Lista(LoginRequiredMixin, ListView):
     context_object_name = 'clientes'
 
 
-class AtualizaView(LoginRequiredMixin, UpdateView):
-    model = Cliente
-    template_name = 'cliente.html'
-    fields = ['nome', 'sexo', 'cpf', 'nasc', 'telefone', 'celular', 'email']
-    success_url = reverse_lazy('lista')
+@login_required()
+def up_date(request, pk):
+    upd = get_object_or_404(Cliente, id=pk)
+    forms = ClienteForm(request.POST or None, instance=upd)
+    if forms.is_valid():
+        forms.save()
+        return redirect('lista')
+    context = {
+        'forms': forms
+    }
+    return render(request, 'cliente.html', context)
 
 
 class DeletaView(LoginRequiredMixin, DeleteView):
